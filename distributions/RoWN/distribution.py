@@ -43,7 +43,8 @@ class Distribution(HWN):
             ),
             covar
         )
-        print(torch.zeros(target_axis.size().shape))
+        print(target_axis.size())
+        print(torch.zeros(target_axis.size()).shape)
         super().__init__(mean, base)
 
     def log_prob(self, z):
