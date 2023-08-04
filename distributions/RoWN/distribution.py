@@ -27,10 +27,15 @@ class Distribution(HWN):
         base_axis[..., 0] = torch.where(
             target_axis[..., 0] >= 0, 1, -1
         )
+        print("mean:", mean)
+        print("target_axis:", target_axis)
+        print("base_axis:", base_axis)
+        print("covar before R:", covar, covar.shape)
         R = rotation_matrix(base_axis, target_axis)
 
         covar = (R * covar[..., None, :]).matmul(R.transpose(-1, -2))
-        print(covar)
+        print("R:", R, R.shape)
+        print("covar:", covar, covar.shape)
         base = MultivariateNormal(
             torch.zeros(
                 target_axis.size(), 
