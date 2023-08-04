@@ -27,9 +27,9 @@ class Distribution(HWN):
         base_axis[..., 0] = torch.where(
             target_axis[..., 0] >= 0, 1, -1
         )
-        print("mean:", mean)
-        print("target_axis:", target_axis)
-        print("base_axis:", base_axis)
+        print("mean:", mean, mean.shape)
+        print("target_axis:", target_axis, target_axis.shape)
+        print("base_axis:", base_axis, base_axis.shape)
         print("covar before R:", covar, covar.shape)
         R = rotation_matrix(base_axis, target_axis)
 
@@ -43,7 +43,7 @@ class Distribution(HWN):
             ),
             covar
         )
-
+        print(torch.zeros(target_axis.size().shape))
         super().__init__(mean, base)
 
     def log_prob(self, z):
