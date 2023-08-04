@@ -48,8 +48,10 @@ class Distribution(HWN):
         super().__init__(mean, base)
 
     def log_prob(self, z):
+        print("z.shape:", z.shape)
         u = self.manifold.logmap(self.mean, z)
         v = self.manifold.transp(self.mean, self.origin, u)
+        print("v.shape:", v.shape)
         log_prob_v = self.base.log_prob(v[:, :, 1:])
 
         r = self.manifold.norm(u)
