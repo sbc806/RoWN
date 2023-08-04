@@ -30,6 +30,7 @@ class Distribution(HWN):
         R = rotation_matrix(base_axis, target_axis)
 
         covar = (R * covar[..., None, :]).matmul(R.transpose(-1, -2))
+        print(covar)
         base = MultivariateNormal(
             torch.zeros(
                 target_axis.size(), 
