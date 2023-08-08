@@ -12,7 +12,7 @@ def get_prior(args):
         args.latent_dim, 
         device=args.device
     )
-    print(covar.shape)
+    print("covar.shape in get_prior():", covar.shape)
     prior = Distribution(mean, covar)
     return prior
 
